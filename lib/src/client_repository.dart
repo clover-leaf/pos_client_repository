@@ -23,6 +23,9 @@ class ClientRepository {
   /// Place order to the server.
   void checkout(Map<String, dynamic> order) => _orderClient.checkOut(order);
 
+  /// Delivery orders
+  void delivery(Map<String, dynamic> data) => _orderClient.delivery(data);
+
   /// Return a stream of real-time [Invoice]
   Stream<Invoice?> get invoice => _orderClient.invoice;
 
