@@ -36,7 +36,7 @@ class ClientRepository {
   Stream<List<InvoiceDish>> get deliveryDishes => _orderClient.deliveryDishes;
 
   /// Return a stream of review [InvoiceDish].
-  Stream<List<InvoiceDish>> get reviewDishes => _orderClient.reviewDishes;
+  Stream<List<String>> get reviewDishes => _orderClient.reviewDishes;
 
   // /// Return a stream of connection updates from the server.
   // Stream<ConnectionState> get connection => _menuClient.connection;

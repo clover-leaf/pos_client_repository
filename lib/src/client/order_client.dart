@@ -66,15 +66,11 @@ class OrderClient {
       });
 
   /// Return a stream of review [InvoiceDish].
-  Stream<List<InvoiceDish>> get reviewDishes =>
+  Stream<List<String>> get reviewDishes =>
       _ws.messages.cast<String>().map((message) {
         final data = jsonDecode(message) as Map<String, dynamic>;
         if (data['type'] == Message.reviewOrder.value) {
-          final invoiceDishes = fromJson<InvoiceDish>(
-            InvoiceDish.fromJson,
-            data['invoice_dishes'],
-          );
-          return invoiceDishes;
+          return data['invoice_dishes_id'];
         } else {
           return [];
         }
