@@ -17,7 +17,7 @@ class OrderClient {
     _ws.send(message);
   }
 
-  /// Return a stream of real-time [Invoice] that match with tableId.
+  /// Return a stream of real-time [Invoice]
   Stream<Invoice?> get invoice => _ws.messages.cast<String>().map((message) {
         final data = jsonDecode(message) as Map<String, dynamic>;
         if (data['type'] == Message.prepareOrder.value) {
@@ -29,11 +29,41 @@ class OrderClient {
         }
       });
 
-  /// Return a stream of real-time [InvoiceDish] that match with tableId.
+  /// Return a stream of prepare [InvoiceDish].
   Stream<List<InvoiceDish>> get prepareDishes =>
       _ws.messages.cast<String>().map((message) {
         final data = jsonDecode(message) as Map<String, dynamic>;
         if (data['type'] == Message.prepareOrder.value) {
+          final invoiceDishes = fromJson<InvoiceDish>(
+            InvoiceDish.fromJson,
+            data['invoice_dishes'],
+          );
+          return invoiceDishes;
+        } else {
+          return [];
+        }
+      });
+
+  /// Return a stream of delivery [InvoiceDish].
+  Stream<List<InvoiceDish>> get deliveryDishes =>
+      _ws.messages.cast<String>().map((message) {
+        final data = jsonDecode(message) as Map<String, dynamic>;
+        if (data['type'] == Message.deliveryOrder.value) {
+          final invoiceDishes = fromJson<InvoiceDish>(
+            InvoiceDish.fromJson,
+            data['invoice_dishes'],
+          );
+          return invoiceDishes;
+        } else {
+          return [];
+        }
+      });
+
+  /// Return a stream of review [InvoiceDish].
+  Stream<List<InvoiceDish>> get reviewDishes =>
+      _ws.messages.cast<String>().map((message) {
+        final data = jsonDecode(message) as Map<String, dynamic>;
+        if (data['type'] == Message.reviewOrder.value) {
           final invoiceDishes = fromJson<InvoiceDish>(
             InvoiceDish.fromJson,
             data['invoice_dishes'],
