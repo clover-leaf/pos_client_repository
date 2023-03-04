@@ -17,6 +17,12 @@ class OrderClient {
     _ws.send(message);
   }
 
+  /// Delivery orders
+  void delivery(Map<String, dynamic> data) {
+    final message = jsonEncode({'type': Message.deliveryOrder.value, ...data});
+    _ws.send(message);
+  }
+
   /// Return a stream of real-time [Invoice]
   Stream<Invoice?> get invoice => _ws.messages.cast<String>().map((message) {
         final data = jsonDecode(message) as Map<String, dynamic>;
