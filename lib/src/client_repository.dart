@@ -23,11 +23,17 @@ class ClientRepository {
   /// Place order to the server.
   void checkout(Map<String, dynamic> order) => _orderClient.checkOut(order);
 
-  /// Return a stream of real-time [Invoice] that match with tableId.
+  /// Return a stream of real-time [Invoice]
   Stream<Invoice?> get invoice => _orderClient.invoice;
 
-  /// Return a stream of real-time [InvoiceDish] that match with tableId.
+  /// Return a stream of prepare [InvoiceDish].
   Stream<List<InvoiceDish>> get prepareDishes => _orderClient.prepareDishes;
+
+  /// Return a stream of delivery [InvoiceDish].
+  Stream<List<InvoiceDish>> get deliveryDishes => _orderClient.deliveryDishes;
+
+  /// Return a stream of review [InvoiceDish].
+  Stream<List<InvoiceDish>> get reviewDishes => _orderClient.reviewDishes;
 
   // /// Return a stream of connection updates from the server.
   // Stream<ConnectionState> get connection => _menuClient.connection;
