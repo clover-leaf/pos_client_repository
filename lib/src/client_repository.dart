@@ -1,4 +1,3 @@
-
 import 'package:client_repository/src/client/client.dart';
 import 'package:http/http.dart' as http;
 import 'package:pos_server/pos_server.dart';
@@ -9,13 +8,10 @@ import 'package:pos_server/pos_server.dart';
 class ClientRepository {
   /// {@macro client_repository}
   ClientRepository({
-    required this.tableId,
     ApiClient? apiClient,
     OrderClient? orderClient,
   })  : _apiClient = apiClient ?? ApiClient(httpClient: http.Client()),
         _orderClient = orderClient ?? OrderClient();
-
-  final int tableId;
 
   final ApiClient _apiClient;
 
