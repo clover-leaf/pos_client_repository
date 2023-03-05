@@ -1,3 +1,4 @@
+import 'package:client_repository/client_repository.dart';
 import 'package:client_repository/src/client/client.dart';
 import 'package:http/http.dart' as http;
 import 'package:pos_server/pos_server.dart';
@@ -39,11 +40,11 @@ class ClientRepository {
   Stream<List<String>> get reviewDishes => _orderClient.reviewDishes;
 
   // /// Return a stream of connection updates from the server.
-  // Stream<ConnectionState> get connection => _menuClient.connection;
+  Stream<ConnectionState> get connection => _orderClient.connection;
 
   // /// Close the connection.
   void close() {
     // _menuClient.close();
-    // _orderClient.close();
+    _orderClient.close();
   }
 }
