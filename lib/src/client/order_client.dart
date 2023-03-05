@@ -7,7 +7,9 @@ import 'package:web_socket_client/web_socket_client.dart';
 class OrderClient {
   /// {@macro client_repository}
   OrderClient({WebSocket? socket})
-      : _ws = socket ?? WebSocket(Uri.parse('ws://localhost:8080/ws-order'));
+      : _ws = socket ??
+            WebSocket(
+                Uri.parse('ws://seal-app-a59wt.ondigitalocean.app/ws-order'));
 
   final WebSocket _ws;
 
