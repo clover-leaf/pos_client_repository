@@ -9,7 +9,7 @@ class OrderClient {
   OrderClient({WebSocket? socket})
       : _ws = socket ??
             WebSocket(
-                Uri.parse('ws://seal-app-a59wt.ondigitalocean.app/ws-order'));
+                Uri.parse('wss://seal-app-a59wt.ondigitalocean.app/ws-order'));
 
   final WebSocket _ws;
 
