@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class ApiClient {
   ApiClient({required http.Client httpClient, String? url})
-      : _url = url ?? 'https://seal-app-a59wt.ondigitalocean.app',
+      : _url = url ?? 'seal-app-a59wt.ondigitalocean.app',
         _httpWrapper = HttpWrapper(httpClient: httpClient);
 
   /// The url of api
@@ -13,7 +13,7 @@ class ApiClient {
   final HttpWrapper _httpWrapper;
 
   Future<Map<String, dynamic>> requestMenu() async {
-    final res = await _httpWrapper.get(Uri.http(_url, 'request-menu'));
+    final res = await _httpWrapper.get(Uri.https(_url, 'request-menu'));
     return res;
   }
 }
