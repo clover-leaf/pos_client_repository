@@ -2,6 +2,7 @@ import 'package:client_repository/client_repository.dart';
 import 'package:client_repository/src/client/client.dart';
 import 'package:http/http.dart' as http;
 import 'package:pos_server/pos_server.dart';
+import 'package:rxdart/rxdart.dart';
 
 /// {@template client_repository}
 /// A Very Good Project created by Very Good CLI.
@@ -38,6 +39,14 @@ class ClientRepository {
 
   /// Return a stream of review [InvoiceDish].
   Stream<List<String>> get reviewDishes => _orderClient.reviewDishes;
+
+  final _shouldNotifyDelivery = BehaviorSubject<bool>.seeded(false);
+
+  Stream<bool> getShouldNotifyDelivery() =>
+      _shouldNotifyDelivery.asBroadcastStream();
+
+  void updateShouldNotifyDelivery({required bool shouldNotify}) =>
+      _shouldNotifyDelivery.add(shouldNotify);
 
   // /// Return a stream of connection updates from the server.
   Stream<ConnectionState> get connection => _orderClient.connection;
