@@ -40,13 +40,20 @@ class ClientRepository {
   /// Return a stream of review [InvoiceDish].
   Stream<List<String>> get reviewDishes => _orderClient.reviewDishes;
 
-  final _shouldNotifyDelivery = BehaviorSubject<bool>.seeded(false);
+  final _shouldNotifyDelivering = BehaviorSubject<bool>.seeded(false);
+  final _shouldNotifyDeliveried = BehaviorSubject<bool>.seeded(false);
 
-  Stream<bool> getShouldNotifyDelivery() =>
-      _shouldNotifyDelivery.asBroadcastStream();
+  Stream<bool> getShouldNotifyDelivering() =>
+      _shouldNotifyDelivering.asBroadcastStream();
 
-  void updateShouldNotifyDelivery({required bool shouldNotify}) =>
-      _shouldNotifyDelivery.add(shouldNotify);
+  Stream<bool> getShouldNotifyDeliveried() =>
+      _shouldNotifyDeliveried.asBroadcastStream();
+
+  void updateShouldNotifyDelivering({required bool shouldNotify}) =>
+      _shouldNotifyDelivering.add(shouldNotify);
+
+  void updateShouldNotifyDeliveried({required bool shouldNotify}) =>
+      _shouldNotifyDeliveried.add(shouldNotify);
 
   // /// Return a stream of connection updates from the server.
   Stream<ConnectionState> get connection => _orderClient.connection;
