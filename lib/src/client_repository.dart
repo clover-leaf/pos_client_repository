@@ -46,13 +46,13 @@ class ClientRepository {
   Stream<bool> getShouldNotifyDelivering() =>
       _shouldNotifyDelivering.asBroadcastStream();
 
-  Stream<bool> getShouldNotifyDeliveried() =>
+  Stream<bool> getShouldNotifyDelivered() =>
       _shouldNotifyDelivered.asBroadcastStream();
 
   void updateShouldNotifyDelivering({required bool shouldNotify}) =>
       _shouldNotifyDelivering.add(shouldNotify);
 
-  void updateShouldNotifyDeliveried({required bool shouldNotify}) =>
+  void updateShouldNotifyDelivered({required bool shouldNotify}) =>
       _shouldNotifyDelivered.add(shouldNotify);
 
   // /// Return a stream of connection updates from the server.
