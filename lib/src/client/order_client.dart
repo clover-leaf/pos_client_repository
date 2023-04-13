@@ -7,9 +7,9 @@ import 'package:web_socket_client/web_socket_client.dart';
 class OrderClient {
   /// {@macro client_repository}
   OrderClient({WebSocket? socket})
-      : _ws = socket ??
-            WebSocket(
-                Uri.parse('wss://seal-app-a59wt.ondigitalocean.app/ws-order'));
+      : _ws = socket ?? WebSocket(Uri.parse('ws://192.168.1.7:8080/ws-order'));
+  // WebSocket(
+  //     Uri.parse('wss://seal-app-a59wt.ondigitalocean.app/ws-order'));
 
   final WebSocket _ws;
 
@@ -72,7 +72,9 @@ class OrderClient {
       _ws.messages.cast<String>().map((message) {
         final data = jsonDecode(message) as Map<String, dynamic>;
         if (data['type'] == Message.reviewOrder.value) {
-          return data['invoice_dishes_id'];
+          return (data['invoice_dishes_id'] as List<dynamic>)
+              .map((e) => e as String)
+              .toList();
         } else {
           return [];
         }
