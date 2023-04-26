@@ -2,7 +2,6 @@ import 'package:client_repository/client_repository.dart';
 import 'package:client_repository/src/client/client.dart';
 import 'package:client_repository/src/client/ready_client.dart';
 import 'package:http/http.dart' as http;
-import 'package:pos_server/pos_server.dart';
 import 'package:rxdart/rxdart.dart';
 
 /// {@template client_repository}

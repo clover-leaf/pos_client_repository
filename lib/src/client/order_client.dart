@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:client_repository/client_repository.dart';
-import 'package:pos_server/pos_server.dart';
 import 'package:web_socket_client/web_socket_client.dart';
 
 class OrderClient {

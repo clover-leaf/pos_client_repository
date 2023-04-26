@@ -7,12 +7,11 @@ environment:
   sdk: '>=2.19.1 <3.0.0'
 
 dependencies:
+  equatable: ^2.0.5
   http: ^0.13.5
-  pos_server:
-    git:
-      url: https://github.com/clover-leaf/pos_server.git
-      ref: master
+  json_annotation: ^4.8.0
   rxdart: ^0.27.7
+  uuid: ^3.0.7
   web_socket_client: ^0.1.0-dev.1
 
 dev_dependencies:

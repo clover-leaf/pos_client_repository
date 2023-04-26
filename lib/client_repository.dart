@@ -13,3 +13,4 @@ export 'package:web_socket_client/web_socket_client.dart'
 
 export 'src/client_repository.dart';
 export 'src/utils/utils.dart';
+export 'src/models/models.dart';

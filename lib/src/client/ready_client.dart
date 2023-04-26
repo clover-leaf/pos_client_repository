@@ -1,4 +1,3 @@
-import 'package:pos_server/pos_server.dart';
 import 'package:web_socket_client/web_socket_client.dart';
 
 class ReadyClient {
