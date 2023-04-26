@@ -1,5 +1,6 @@
 import 'package:client_repository/client_repository.dart';
 import 'package:client_repository/src/client/client.dart';
+import 'package:client_repository/src/client/ready_client.dart';
 import 'package:http/http.dart' as http;
 import 'package:pos_server/pos_server.dart';
 import 'package:rxdart/rxdart.dart';
@@ -12,12 +13,16 @@ class ClientRepository {
   ClientRepository({
     ApiClient? apiClient,
     OrderClient? orderClient,
+    ReadyClient? readyClient,
   })  : _apiClient = apiClient ?? ApiClient(httpClient: http.Client()),
-        _orderClient = orderClient ?? OrderClient();
+        _orderClient = orderClient ?? OrderClient(),
+        _readyClient = readyClient ?? ReadyClient();
 
   final ApiClient _apiClient;
 
   final OrderClient _orderClient;
+
+  final ReadyClient _readyClient;
 
   /// Request menu from the server.
   Future<Map<String, dynamic>> requestMenu() async => _apiClient.requestMenu();
@@ -55,6 +60,9 @@ class ClientRepository {
   void updateShouldNotifyDelivered({required bool shouldNotify}) =>
       _shouldNotifyDelivered.add(shouldNotify);
 
+  /// Return a stream of real-time [Invoice]
+  Stream<bool> get isReady => _readyClient.isReady;
+
   // /// Return a stream of connection updates from the server.
   Stream<ConnectionState> get connection => _orderClient.connection;
 
@@ -62,5 +70,6 @@ class ClientRepository {
   void close() {
     // _menuClient.close();
     _orderClient.close();
+    _readyClient.close();
   }
 }
