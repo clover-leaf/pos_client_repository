@@ -63,7 +63,7 @@ class ClientRepository {
       _shouldNotifyDelivered.add(shouldNotify);
 
   /// Return a stream of real-time [Invoice]
-  Stream<bool> get isReady => _readyClient.isReady;
+  Stream<int> get isReady => _readyClient.isReady;
 
   // /// Return a stream of connection updates from the server.
   Stream<ConnectionState> get connection => _orderClient.connection;

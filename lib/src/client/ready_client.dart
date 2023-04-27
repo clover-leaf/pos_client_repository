@@ -10,9 +10,8 @@ class ReadyClient {
   final WebSocket _ws;
 
   /// Return a stream of real-time [Invoice]
-  Stream<bool> get isReady => _ws.messages
-      .cast<String>()
-      .map((message) => message.toLowerCase() == 'true');
+  Stream<int> get isReady =>
+      _ws.messages.cast<String>().map((message) => int.parse(message));
 
   /// Return a stream of connection updates from the server.
   Stream<ConnectionState> get connection => _ws.connection;
