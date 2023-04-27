@@ -26,8 +26,8 @@ class ClientRepository {
   /// Request menu from the server.
   Future<Map<String, dynamic>> requestMenu() async => _apiClient.requestMenu();
 
-  Future<Map<String, dynamic>> review(String dishId, int star) async =>
-      _apiClient.review(dishId, star);
+  Future<Map<String, dynamic>> review(String dishId, int rating) async =>
+      _apiClient.review(dishId, rating);
 
   /// Place order to the server.
   void checkout(Map<String, dynamic> order) => _orderClient.checkOut(order);
