@@ -29,6 +29,8 @@ class ClientRepository {
   Future<Map<String, dynamic>> review(String dishId, int rating) async =>
       _apiClient.review(dishId, rating);
 
+  Future<Map<String, dynamic>> getReview() async => _apiClient.getReview();
+
   /// Place order to the server.
   void checkout(Map<String, dynamic> order) => _orderClient.checkOut(order);
 
