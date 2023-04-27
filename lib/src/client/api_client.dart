@@ -16,4 +16,10 @@ class ApiClient {
     final res = await _httpWrapper.get(Uri.https(_url, 'request-menu'));
     return res;
   }
+
+  Future<Map<String, dynamic>> review(String dishId, int star) async {
+    final res = await _httpWrapper
+        .get(Uri.https(_url, 'review', {'id': dishId, 'star': star}));
+    return res;
+  }
 }
