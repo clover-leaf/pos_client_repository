@@ -11,6 +11,7 @@ class Invoice extends Equatable {
   Invoice({
     String? id,
     required this.tableId,
+    required this.tableRfid,
     required this.time,
   })  : assert(
           id == null || id.isNotEmpty,
@@ -22,6 +23,9 @@ class Invoice extends Equatable {
 
   @JsonKey(name: 'table_id')
   final int tableId;
+
+  @JsonKey(name: 'table_rfid')
+  final String tableRfid;
 
   final DateTime time;
 
@@ -37,15 +41,17 @@ class Invoice extends Equatable {
   Invoice copyWith({
     String? id,
     int? tableId,
+    String? tableRfid,
     DateTime? time,
   }) {
     return Invoice(
       id: id ?? this.id,
       tableId: tableId ?? this.tableId,
+      tableRfid: tableRfid ?? this.tableRfid,
       time: time ?? this.time,
     );
   }
 
   @override
-  List<Object?> get props => [id, tableId, time];
+  List<Object?> get props => [id, tableId, tableRfid, time];
 }
