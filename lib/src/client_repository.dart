@@ -24,6 +24,9 @@ class ClientRepository {
   final ReadyClient _readyClient;
 
   /// Request menu from the server.
+  Future<Map<String, dynamic>> getRfid() async => _apiClient.getRfid();
+
+  /// Request menu from the server.
   Future<Map<String, dynamic>> requestMenu() async => _apiClient.requestMenu();
 
   Future<Map<String, dynamic>> review(String dishId, int rating) async =>

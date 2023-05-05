@@ -12,6 +12,11 @@ class ApiClient {
   /// HttpWrapper instance
   final HttpWrapper _httpWrapper;
 
+  Future<Map<String, dynamic>> getRfid() async {
+    final res = await _httpWrapper.get(Uri.https(_url, 'get-rfid'));
+    return res;
+  }
+
   Future<Map<String, dynamic>> requestMenu() async {
     final res = await _httpWrapper.get(Uri.https(_url, 'request-menu'));
     return res;
