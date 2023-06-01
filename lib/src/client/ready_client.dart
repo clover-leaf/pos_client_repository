@@ -5,7 +5,7 @@ class ReadyClient {
   ReadyClient({WebSocket? socket})
       : _ws = socket ??
             WebSocket(
-                Uri.parse('wss://seal-app-a59wt.ondigitalocean.app/ready'));
+                Uri.parse('wss://oyster-app-urtgv.ondigitalocean.app/ready'));
 
   final WebSocket _ws;
 

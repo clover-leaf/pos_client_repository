@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class ApiClient {
   ApiClient({required http.Client httpClient, String? url})
-      : _url = url ?? 'seal-app-a59wt.ondigitalocean.app',
+      : _url = url ?? 'oyster-app-urtgv.ondigitalocean.app',
         _httpWrapper = HttpWrapper(httpClient: httpClient);
 
   /// The url of api

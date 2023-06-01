@@ -7,8 +7,8 @@ class OrderClient {
   /// {@macro client_repository}
   OrderClient({WebSocket? socket})
       : _ws = socket ??
-            WebSocket(
-                Uri.parse('wss://seal-app-a59wt.ondigitalocean.app/ws-order'));
+            WebSocket(Uri.parse(
+                'wss://oyster-app-urtgv.ondigitalocean.app/ws-order'));
 
   final WebSocket _ws;
 
